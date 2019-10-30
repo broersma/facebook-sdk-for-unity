@@ -201,16 +201,37 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
             contentDescription:(const char *)contentDescription
                       photoURL:(const char *)photoURL
 {
-  FBSDKShareLinkContent *linkContent = [[FBSDKShareLinkContent alloc] init];
+  if ([photoURL length] == 0)
+  {
+    FBSDKShareLinkContent *linkContent = [[FBSDKShareLinkContent alloc] init];
 
-  NSString *contentUrlStr = [FBUnityUtility stringFromCString:contentURL];
-  if (contentUrlStr) {
-    linkContent.contentURL = [NSURL URLWithString:contentUrlStr];
+    NSString *contentUrlStr = [FBUnityUtility stringFromCString:contentURL];
+    if (contentUrlStr) {
+      linkContent.contentURL = [NSURL URLWithString:contentUrlStr];
+    }
+
+    [self shareContentWithRequestId:requestId
+                       shareContent:linkContent
+                         dialogMode:[self getDialogMode]];
   }
+  else
+  {
+	FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
 
-  [self shareContentWithRequestId:requestId
-                     shareContent:linkContent
-                       dialogMode:[self getDialogMode]];
+	NSString *imageUrlStr = [FBUnityUtility stringFromCString:photoURL];
+	if(imageUrlStr) {
+	  UIImage *image = [UIImage imageWithContentsOfFile:imageUrlStr];
+
+      FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+      photo.image = image;
+      photo.userGenerated = YES;
+      content.photos = @[photo];
+	}
+
+    [self shareContentWithRequestId:requestId
+                       shareContent:content
+                         dialogMode:[self getDialogMode]];
+  }
 }
 
 - (void)shareFeedWithRequestId:(int)requestId
@@ -251,7 +272,7 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
 }
 
 - (void)shareContentWithRequestId:(int)requestId
-                     shareContent:(FBSDKShareLinkContent *)linkContent
+                     shareContent:(FBSDKSharingContent *)linkContent
                        dialogMode:(FBSDKShareDialogMode)dialogMode
 {
   FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
