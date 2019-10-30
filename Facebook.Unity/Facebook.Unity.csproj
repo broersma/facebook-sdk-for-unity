@@ -34,26 +34,11 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="UnityEngine">
-      <HintPath>\Applications\Unity\Hub\Editor\2019.1.3f1\Unity.app\Contents\Managed\UnityEngine\UnityEngine.dll</HintPath>
+      <HintPath>\Applications\Unity\Hub\Editor\2019.1.3f1\Unity.app\Contents\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine.UI">
       <HintPath>\Applications\Unity\Hub\Editor\2019.1.3f1\Unity.app\Contents\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>\Applications\Unity\Hub\Editor\2019.1.3f1\Unity.app\Contents\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>\Applications\Unity\Hub\Editor\2019.1.3f1\Unity.app\Contents\Managed\UnityEngine\UnityEngine.UnityWebRequestModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>\Applications\Unity\Hub\Editor\2019.1.3f1\Unity.app\Contents\Managed\UnityEngine\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>\Applications\Unity\Hub\Editor\2019.1.3f1\Unity.app\Contents\Managed\UnityEngine\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>\Applications\Unity\Hub\Editor\2019.1.3f1\Unity.app\Contents\Managed\UnityEngine\UnityEngine.UIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
