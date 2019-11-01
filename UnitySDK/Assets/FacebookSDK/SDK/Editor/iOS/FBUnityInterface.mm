@@ -201,7 +201,7 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
             contentDescription:(const char *)contentDescription
                       photoURL:(const char *)photoURL
 {
-  if ([photoURL length] == 0)
+  if (!photoURL || photoURL[0] == 0)
   {
     FBSDKShareLinkContent *linkContent = [[FBSDKShareLinkContent alloc] init];
 
@@ -220,7 +220,8 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
 
 	NSString *imageUrlStr = [FBUnityUtility stringFromCString:photoURL];
 	if(imageUrlStr) {
-	  UIImage *image = [UIImage imageWithContentsOfFile:imageUrlStr];
+	  NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrlStr]];
+	  UIImage *image = [UIImage imageWithData: imageData];
 
       FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
       photo.image = image;
@@ -272,7 +273,7 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
 }
 
 - (void)shareContentWithRequestId:(int)requestId
-                     shareContent:(FBSDKSharingContent *)linkContent
+                     shareContent:(id<FBSDKSharingContent>) linkContent
                        dialogMode:(FBSDKShareDialogMode)dialogMode
 {
   FBSDKShareDialog *dialog = [[FBSDKShareDialog alloc] init];
