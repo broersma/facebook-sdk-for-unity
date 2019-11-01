@@ -24,6 +24,7 @@ namespace Facebook.Unity
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.Networking;
 
     /*
      * A short lived async request that loads a FBResult from a url endpoint
@@ -80,7 +81,7 @@ namespace Facebook.Unity
 
         internal IEnumerator Start()
         {
-            WWW www;
+            UnityWebRequest www;
             if (this.method == HttpMethod.GET)
             {
                 string urlParams = this.url.AbsoluteUri.Contains("?") ? "&" : "?";
@@ -92,14 +93,12 @@ namespace Facebook.Unity
                     }
                 }
 
-                Dictionary<string, string> headers = new Dictionary<string, string>();
+                www = UnityWebRequestTexture.GetTexture(this.url + urlParams);
 
                 if (Constants.CurrentPlatform != FacebookUnityPlatform.WebGL)
                 {
-                    headers["User-Agent"] = Constants.GraphApiUserAgent;
+                    www.SetRequestHeader("User-Agent", Constants.GraphApiUserAgent);
                 }
-
-                www = new WWW(this.url + urlParams, null, headers);
             }
             else
             {
@@ -127,10 +126,10 @@ namespace Facebook.Unity
                     this.query.headers["User-Agent"] = Constants.GraphApiUserAgent;
                 }
 
-                www = new WWW(this.url.AbsoluteUri, this.query);
+                www = UnityWebRequest.Post(this.url.AbsoluteUri, this.query);
             }
 
-            yield return www;
+            yield return www.SendWebRequest();
 
             if (this.callback != null)
             {
