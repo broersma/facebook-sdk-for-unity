@@ -92,7 +92,7 @@ namespace Facebook.Unity.IOS
             int requestId,
             byte[] photoData)
         {
-			int bufferSize = photoData.length;
+			int bufferSize = photoData.Length;
 
 			int size = Marshal.SizeOf(photoData[0]) * bufferSize;
 
