@@ -235,6 +235,24 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
   }
 }
 
+- (void)sharePhotoWithRequestId:(int)requestId
+					 photoData:(NSData*) photoData
+{
+
+	FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
+
+    UIImage *image = [UIImage imageWithData: photoData];
+
+    FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
+    photo.image = image;
+    photo.userGenerated = YES;
+    content.photos = @[photo];
+
+    [self shareContentWithRequestId:requestId
+                       shareContent:content
+                         dialogMode:[self getDialogMode]];
+}
+
 - (void)shareFeedWithRequestId:(int)requestId
                           toId:(const char *)toID
                           link:(const char *)link
@@ -439,6 +457,15 @@ extern "C" {
                                            contentDescription:contentDescription
                                                      photoURL:photoURL];
   }
+
+
+
+	void IOSFBSharePhoto(int requestId, const void* a_PhotoBuffer,unsigned int a_BufferLength)
+	{
+		NSData* photoData = [[NSData alloc] initWithBytes:a_PhotoBuffer length:a_BufferLength];
+		[[FBUnityInterface sharedInstance] sharePhotoWithRequestId:requestId
+                                                     photoData:photoData];
+	}
 
   void IOSFBFeedShare(int requestId,
                     const char *toId,

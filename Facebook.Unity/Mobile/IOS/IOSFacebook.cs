@@ -219,6 +219,15 @@ namespace Facebook.Unity.Mobile.IOS
                 photoURL.AbsoluteUrlOrEmptyString());
         }
 
+		public override void SharePhoto(
+            byte[] photoData,
+            FacebookDelegate<IShareResult> callback)
+		{
+            this.iosWrapper.SharePhoto(
+                this.AddCallback(callback),
+                photoData);
+		}
+
         public override void FeedShare(
             string toId,
             Uri link,

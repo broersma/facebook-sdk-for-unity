@@ -97,6 +97,15 @@ namespace Facebook.Unity.Tests.Mobile.IOS
             this.Facebook.OnShareLinkComplete(new ResultContainer(result));
         }
 
+		public void SharePhoto(
+			int requestId,
+			byte[] photoData)
+		{
+			this.LogMethodCall();
+			var result = MockResults.GetGenericResult(requestId, this.ResultExtras);
+			this.Facebook.OnShareLinkComplete(new ResultContainer(result));
+		}
+
         public void FeedShare(
             int requestId,
             string toId,
