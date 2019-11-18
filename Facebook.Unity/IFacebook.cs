@@ -78,6 +78,10 @@ namespace Facebook.Unity
             Uri photoURL,
             FacebookDelegate<IShareResult> callback);
 
+		void SharePhoto(
+            byte[] photoData,
+            FacebookDelegate<IShareResult> callback);
+
         void FeedShare(
             string toId,
             Uri link,
