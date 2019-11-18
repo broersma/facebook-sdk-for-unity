@@ -20,6 +20,7 @@
 
 namespace Facebook.Unity.IOS
 {
+	using System;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using Facebook.Unity.Mobile.IOS;
