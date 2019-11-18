@@ -496,6 +496,15 @@ namespace Facebook.Unity
                 callback);
         }
 
+		public static void SharePhoto(
+            byte[] photoData,
+            FacebookDelegate<IShareResult> callback = null)
+        {
+            FacebookImpl.SharePhoto(
+                photoData,
+                callback);
+        }
+
         /// <summary>
         /// Legacy feed share. Only use this dialog if you need the legacy parameters otherwiese use
         /// <see cref="FB.ShareLink(System.String, System.String, System.String, System.String, Facebook.FacebookDelegate"/>.

@@ -87,6 +87,33 @@ namespace Facebook.Unity.IOS
                 photoURL);
         }
 
+        public void SharePhoto(
+            int requestId,
+            byte[] photoData)
+        {
+			int bufferSize = photoData.length;
+
+			int size = Marshal.SizeOf(photoData[0]) * bufferSize;
+
+            IntPtr imageBuffer = Marshal.AllocHGlobal(size);
+
+            try
+            {
+                // Copy the array to unmanaged memory.
+                Marshal.Copy(photoData, 0, imageBuffer, bufferSize);
+
+				IOSWrapper.IOSFBSharePhoto(
+					requestId,
+					imageBuffer,
+					bufferSize);
+            }
+            finally
+            {
+               // Free the unmanaged memory.
+               Marshal.FreeHGlobal(imageBuffer);
+            }
+        }
+
         public void FeedShare(
             int requestId,
             string toId,
@@ -260,6 +287,9 @@ namespace Facebook.Unity.IOS
             string contentTitle,
             string contentDescription,
             string photoURL);
+
+        [DllImport("__Internal")]
+        public static extern void IOSFBSharePhoto(int requestID, IntPtr imageBuffer, int bufferSize);
 
         [DllImport("__Internal")]
         private static extern void IOSFBFeedShare(

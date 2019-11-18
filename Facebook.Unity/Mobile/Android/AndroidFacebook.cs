@@ -231,6 +231,13 @@ namespace Facebook.Unity.Mobile.Android
             shareLinkCall.Call(args);
         }
 
+		public override void SharePhoto(
+            byte[] photoData,
+            FacebookDelegate<IShareResult> callback)
+		{
+			throw new NotImplementedException("Only implemented for iOS for now.");
+		}
+
         public override void FeedShare(
             string toId,
             Uri link,

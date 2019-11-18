@@ -137,6 +137,16 @@ namespace Facebook.Unity.Editor
                 this.CallbackManager.AddFacebookDelegate(callback));
         }
 
+		public override void SharePhoto(
+            byte[] photoData,
+            FacebookDelegate<IShareResult> callback)
+		{
+            this.editorWrapper.ShowMockShareDialog(
+                this.OnShareLinkComplete,
+                "SharePhoto[IOS ONLY!!!]",
+                this.CallbackManager.AddFacebookDelegate(callback));
+		}
+
         public override void FeedShare(
             string toId,
             Uri link,

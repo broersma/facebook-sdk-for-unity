@@ -202,6 +202,13 @@ namespace Facebook.Unity.Gameroom
                 callback);
         }
 
+		public override void SharePhoto(
+            byte[] photoData,
+            FacebookDelegate<IShareResult> callback)
+		{
+			throw new NotImplementedException("Only implemented for iOS for now.");
+		}
+
         public void Pay(
             string product,
             string action,
