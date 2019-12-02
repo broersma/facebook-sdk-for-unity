@@ -43,6 +43,7 @@ namespace Facebook.Unity.Tests
                 "test title",
                 "test description",
                 new Uri("http://www.photo.com/"),
+				"#testhashtag",
                 delegate(IShareResult r)
                 {
                     result = r;

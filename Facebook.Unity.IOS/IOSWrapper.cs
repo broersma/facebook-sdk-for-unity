@@ -291,7 +291,8 @@ namespace Facebook.Unity.IOS
             string contentURL,
             string contentTitle,
             string contentDescription,
-            string photoURL);
+            string photoURL,
+            string hashtag);
 
         [DllImport("__Internal")]
         public static extern void IOSFBSharePhoto(int requestID, IntPtr imageBuffer, int bufferSize, string hashtag);
