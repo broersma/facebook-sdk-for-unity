@@ -139,6 +139,7 @@ namespace Facebook.Unity.Editor
 
 		public override void SharePhoto(
             byte[] photoData,
+            string hashtag,
             FacebookDelegate<IShareResult> callback)
 		{
             this.editorWrapper.ShowMockShareDialog(

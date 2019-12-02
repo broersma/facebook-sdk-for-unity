@@ -221,11 +221,13 @@ namespace Facebook.Unity.Mobile.IOS
 
 		public override void SharePhoto(
             byte[] photoData,
+            string hashtag,
             FacebookDelegate<IShareResult> callback)
 		{
             this.iosWrapper.SharePhoto(
                 this.AddCallback(callback),
-                photoData);
+                photoData,
+                hashtag);
 		}
 
         public override void FeedShare(

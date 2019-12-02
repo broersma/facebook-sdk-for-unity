@@ -498,10 +498,12 @@ namespace Facebook.Unity
 
 		public static void SharePhoto(
             byte[] photoData,
+            string hashtag = null,
             FacebookDelegate<IShareResult> callback = null)
         {
             FacebookImpl.SharePhoto(
                 photoData,
+                hashtag,
                 callback);
         }
 

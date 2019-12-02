@@ -91,7 +91,7 @@ namespace Facebook.Unity.IOS
         public void SharePhoto(
             int requestId,
             byte[] photoData,
-            string hashtag = null)
+            string hashtag)
         {
 			int bufferSize = photoData.Length;
 

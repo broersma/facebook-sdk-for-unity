@@ -100,7 +100,7 @@ namespace Facebook.Unity.Tests.Mobile.IOS
 		public void SharePhoto(
 			int requestId,
 			byte[] photoData,
-			string hashtag = null)
+			string hashtag)
 		{
 			this.LogMethodCall();
 			var result = MockResults.GetGenericResult(requestId, this.ResultExtras);
