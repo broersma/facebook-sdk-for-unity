@@ -237,6 +237,7 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
 
 - (void)sharePhotoWithRequestId:(int)requestId
 					 photoData:(NSData*) photoData
+					 hashtag:(const char *)hashtag
 {
 
 	FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
@@ -247,6 +248,15 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
     photo.image = image;
     photo.userGenerated = YES;
     content.photos = @[photo];
+    if ( hashtag && hashtag[0] != 0) {
+      NSString *hashtagStr = [FBUnityUtility stringFromCString:hashtag];
+      if(hashtagStr) {
+        FBSDKHashtag *hashtagObj = [FBSDKHashtag hashtagWithString:hashtagStr];
+        if ( hashtagObj.valid ) {
+          content.hashtag = hashtagObj;
+        }
+      }
+    }
 
     [self shareContentWithRequestId:requestId
                        shareContent:content
@@ -462,11 +472,12 @@ extern "C" {
 
 
 
-	void IOSFBSharePhoto(int requestId, const void* a_PhotoBuffer,unsigned int a_BufferLength)
+	void IOSFBSharePhoto(int requestId, const void* a_PhotoBuffer,unsigned int a_BufferLength, const char *hashtag)
 	{
 		NSData* photoData = [[NSData alloc] initWithBytes:a_PhotoBuffer length:a_BufferLength];
 		[[FBUnityInterface sharedInstance] sharePhotoWithRequestId:requestId
-                                                     photoData:photoData];
+                                                         photoData:photoData
+                                                           hashtag:hashtag];
 	}
 
   void IOSFBFeedShare(int requestId,
