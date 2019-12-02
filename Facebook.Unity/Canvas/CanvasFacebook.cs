@@ -232,6 +232,7 @@ namespace Facebook.Unity.Canvas
 
 		public override void SharePhoto(
             byte[] photoData,
+            string hashtag,
             FacebookDelegate<IShareResult> callback)
 		{
 			throw new NotImplementedException("Only implemented for iOS for now.");
