@@ -200,39 +200,28 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
                   contentTitle:(const char *)contentTitle
             contentDescription:(const char *)contentDescription
                       photoURL:(const char *)photoURL
+					   hashtag:(const char *)hashtag
 {
-  if (!photoURL || photoURL[0] == 0)
-  {
-    FBSDKShareLinkContent *linkContent = [[FBSDKShareLinkContent alloc] init];
+  FBSDKShareLinkContent *linkContent = [[FBSDKShareLinkContent alloc] init];
 
-    NSString *contentUrlStr = [FBUnityUtility stringFromCString:contentURL];
-    if (contentUrlStr) {
-      linkContent.contentURL = [NSURL URLWithString:contentUrlStr];
+  NSString *contentUrlStr = [FBUnityUtility stringFromCString:contentURL];
+  if (contentUrlStr) {
+    linkContent.contentURL = [NSURL URLWithString:contentUrlStr];
+  }
+
+  if ( hashtag && hashtag[0] != 0) {
+    NSString *hashtagStr = [FBUnityUtility stringFromCString:hashtag];
+    if(hashtagStr) {
+      FBSDKHashtag *hashtagObj = [FBSDKHashtag hashtagWithString:hashtagStr];
+      if ( hashtagObj.valid ) {
+        linkContent.hashtag = hashtagObj;
+      }
     }
-
-    [self shareContentWithRequestId:requestId
-                       shareContent:linkContent
-                         dialogMode:[self getDialogMode]];
   }
-  else
-  {
-	FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc] init];
 
-	NSString *imageUrlStr = [FBUnityUtility stringFromCString:photoURL];
-	if(imageUrlStr) {
-	  NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: imageUrlStr]];
-	  UIImage *image = [UIImage imageWithData: imageData];
-
-      FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc] init];
-      photo.image = image;
-      photo.userGenerated = YES;
-      content.photos = @[photo];
-	}
-
-    [self shareContentWithRequestId:requestId
-                       shareContent:content
-                         dialogMode:[self getDialogMode]];
-  }
+  [self shareContentWithRequestId:requestId
+                     shareContent:linkContent
+                       dialogMode:[self getDialogMode]];
 }
 
 - (void)sharePhotoWithRequestId:(int)requestId
@@ -461,13 +450,15 @@ extern "C" {
                     const char *contentURL,
                     const char *contentTitle,
                     const char *contentDescription,
-                    const char *photoURL)
+                    const char *photoURL,
+                    const char *hashtag)
   {
     [[FBUnityInterface sharedInstance] shareLinkWithRequestId:requestId
                                                    contentURL:contentURL
                                                  contentTitle:contentTitle
                                            contentDescription:contentDescription
-                                                     photoURL:photoURL];
+                                                     photoURL:photoURL
+                                                      hashtag:hashtag];
   }
 
 

@@ -90,7 +90,8 @@ namespace Facebook.Unity.Tests.Mobile.IOS
             string contentURL,
             string contentTitle,
             string contentDescription,
-            string photoURL)
+            string photoURL,
+            string hashtag)
         {
             this.LogMethodCall();
             var result = MockResults.GetGenericResult(requestId, this.ResultExtras);

@@ -78,14 +78,16 @@ namespace Facebook.Unity.IOS
             string contentURL,
             string contentTitle,
             string contentDescription,
-            string photoURL)
+            string photoURL,
+            string hashtag)
         {
             IOSWrapper.IOSFBShareLink(
                 requestId,
                 contentURL,
                 contentTitle,
                 contentDescription,
-                photoURL);
+                photoURL,
+                hashtag);
         }
 
         public void SharePhoto(

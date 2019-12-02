@@ -218,8 +218,13 @@ namespace Facebook.Unity.Canvas
             string contentTitle,
             string contentDescription,
             Uri photoURL,
+            string hashtag,
             FacebookDelegate<IShareResult> callback)
         {
+            if ( hashtag != null ) {
+                throw new NotImplementedException("ShareLink with hashtag is only implemented for iOS and Android for now. Set it to null.");
+            }
+
             MethodArguments args = new MethodArguments();
             args.AddUri("link", contentURL);
             args.AddString("name", contentTitle);

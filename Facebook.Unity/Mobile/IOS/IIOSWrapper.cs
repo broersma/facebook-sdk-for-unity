@@ -49,7 +49,8 @@ namespace Facebook.Unity.Mobile.IOS
             string contentURL,
             string contentTitle,
             string contentDescription,
-            string photoURL);
+            string photoURL,
+            string hashtag);
 
         void SharePhoto(
             int requestId,

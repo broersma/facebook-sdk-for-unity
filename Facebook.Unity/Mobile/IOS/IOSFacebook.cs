@@ -209,6 +209,7 @@ namespace Facebook.Unity.Mobile.IOS
             string contentTitle,
             string contentDescription,
             Uri photoURL,
+            string hashtag,
             FacebookDelegate<IShareResult> callback)
         {
             this.iosWrapper.ShareLink(
@@ -216,7 +217,8 @@ namespace Facebook.Unity.Mobile.IOS
                 contentURL.AbsoluteUrlOrEmptyString(),
                 contentTitle,
                 contentDescription,
-                photoURL.AbsoluteUrlOrEmptyString());
+                photoURL.AbsoluteUrlOrEmptyString(),
+                hashtag);
         }
 
 		public override void SharePhoto(

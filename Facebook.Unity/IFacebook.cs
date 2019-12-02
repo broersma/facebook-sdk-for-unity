@@ -76,6 +76,7 @@ namespace Facebook.Unity
             string contentTitle,
             string contentDescription,
             Uri photoURL,
+            string hashtag,
             FacebookDelegate<IShareResult> callback);
 
 		void SharePhoto(

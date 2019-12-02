@@ -22,6 +22,7 @@ package com.facebook.unity;
 
 import com.facebook.share.internal.ShareFeedContent;
 import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.model.ShareHashtag;
 import com.facebook.share.widget.ShareDialog;
 
 import android.net.Uri;
@@ -45,6 +46,12 @@ class FBDialogUtils {
 
         if (params.containsKey("photo_url")) {
             builder.setImageUrl(Uri.parse(params.getString("photo_url")));
+        }
+
+        if (params.containsKey("hashtag")) {
+            ShareHashtag.Builder hashtagBuilder = new ShareHashtag.Builder();
+            hashtagBuilder.setHashtag(params.getString("hashtag"));
+            builder.setShareHashtag(hashtagBuilder.build());
         }
 
         return builder;

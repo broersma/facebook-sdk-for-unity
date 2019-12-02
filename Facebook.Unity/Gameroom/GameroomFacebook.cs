@@ -189,8 +189,13 @@ namespace Facebook.Unity.Gameroom
             string contentTitle,
             string contentDescription,
             Uri photoURL,
+            string hashtag,
             FacebookDelegate<IShareResult> callback)
         {
+            if ( hashtag != null ) {
+                throw new NotImplementedException("ShareLink with hashtag is only implemented for iOS and Android for now. Set it to null.");
+            }
+
             this.FeedShare(
                 null,
                 contentURL,

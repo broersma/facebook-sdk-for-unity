@@ -486,6 +486,7 @@ namespace Facebook.Unity
             string contentTitle = "",
             string contentDescription = "",
             Uri photoURL = null,
+            string hashtag = null,
             FacebookDelegate<IShareResult> callback = null)
         {
             FacebookImpl.ShareLink(
@@ -493,6 +494,7 @@ namespace Facebook.Unity
                 contentTitle,
                 contentDescription,
                 photoURL,
+                hashtag,
                 callback);
         }
 

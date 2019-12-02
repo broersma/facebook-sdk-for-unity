@@ -129,6 +129,7 @@ namespace Facebook.Unity.Editor
             string contentTitle,
             string contentDescription,
             Uri photoURL,
+            string hashtag,
             FacebookDelegate<IShareResult> callback)
         {
             this.editorWrapper.ShowMockShareDialog(

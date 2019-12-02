@@ -219,6 +219,7 @@ namespace Facebook.Unity.Mobile.Android
             string contentTitle,
             string contentDescription,
             Uri photoURL,
+            string hashtag,
             FacebookDelegate<IShareResult> callback)
         {
             MethodArguments args = new MethodArguments();
@@ -226,6 +227,7 @@ namespace Facebook.Unity.Mobile.Android
             args.AddString("content_title", contentTitle);
             args.AddString("content_description", contentDescription);
             args.AddUri("photo_url", photoURL);
+            args.AddString("hashtag", hashtag);
             var shareLinkCall = new JavaMethodCall<IShareResult>(this, "ShareLink");
             shareLinkCall.Callback = callback;
             shareLinkCall.Call(args);
