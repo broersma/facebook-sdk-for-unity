@@ -32,6 +32,7 @@ namespace Facebook.Unity.Example
         private string shareLink = "https://developers.facebook.com/";
         private string shareTitle = "Link Title";
         private string shareDescription = "Link Description";
+        private string shareHashtag = "#randomhashtag";
         private string shareImage = "http://i.imgur.com/j4M7vCO.jpg";
 
         // Custom Feed Share
@@ -67,7 +68,7 @@ namespace Facebook.Unity.Example
                     new Uri("https://developers.facebook.com/"),
                     "Link Share",
                     "Look I'm sharing a link",
-                    hashtag: null,
+                    "#randomhashtag",
                     new Uri("http://i.imgur.com/j4M7vCO.jpg"),
                     callback: this.HandleResult);
             }
@@ -75,6 +76,7 @@ namespace Facebook.Unity.Example
             this.LabelAndTextField("Link", ref this.shareLink);
             this.LabelAndTextField("Title", ref this.shareTitle);
             this.LabelAndTextField("Description", ref this.shareDescription);
+            this.LabelAndTextField("Hashtag", ref this.shareHashtag);
             this.LabelAndTextField("Image", ref this.shareImage);
             if (this.Button("Share - Custom"))
             {
@@ -82,7 +84,7 @@ namespace Facebook.Unity.Example
                     new Uri(this.shareLink),
                     this.shareTitle,
                     this.shareDescription,
-                    hashtag: null,
+                    this.shareHashtag,
                     new Uri(this.shareImage),
                     this.HandleResult);
             }
