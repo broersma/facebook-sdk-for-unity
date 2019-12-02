@@ -67,6 +67,7 @@ namespace Facebook.Unity.Example
                     new Uri("https://developers.facebook.com/"),
                     "Link Share",
                     "Look I'm sharing a link",
+                    hashtag: null,
                     new Uri("http://i.imgur.com/j4M7vCO.jpg"),
                     callback: this.HandleResult);
             }
@@ -81,6 +82,7 @@ namespace Facebook.Unity.Example
                     new Uri(this.shareLink),
                     this.shareTitle,
                     this.shareDescription,
+                    hashtag: null,
                     new Uri(this.shareImage),
                     this.HandleResult);
             }
