@@ -318,6 +318,8 @@ isPublishPermLogin:(BOOL)isPublishPermLogin
       return FBSDKShareDialogModeNative;
     case ShareDialogMode::WEB:
       return FBSDKShareDialogModeWeb;
+    case ShareDialogMode::BROWSER:
+      return FBSDKShareDialogModeBrowser;
     case ShareDialogMode::FEED:
       return FBSDKShareDialogModeFeedWeb;
     default:
