@@ -113,6 +113,7 @@ namespace Facebook.Unity
 
 		public abstract void SharePhoto(
             byte[] photoData,
+            string hashtag,
             FacebookDelegate<IShareResult> callback);
 
         public abstract void FeedShare(
