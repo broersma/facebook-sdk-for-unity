@@ -90,7 +90,8 @@ namespace Facebook.Unity.IOS
 
         public void SharePhoto(
             int requestId,
-            byte[] photoData)
+            byte[] photoData,
+            string hashtag = null)
         {
 			int bufferSize = photoData.Length;
 
@@ -106,7 +107,8 @@ namespace Facebook.Unity.IOS
 				IOSWrapper.IOSFBSharePhoto(
 					requestId,
 					imageBuffer,
-					bufferSize);
+					bufferSize,
+					hashtag);
             }
             finally
             {
@@ -290,7 +292,7 @@ namespace Facebook.Unity.IOS
             string photoURL);
 
         [DllImport("__Internal")]
-        public static extern void IOSFBSharePhoto(int requestID, IntPtr imageBuffer, int bufferSize);
+        public static extern void IOSFBSharePhoto(int requestID, IntPtr imageBuffer, int bufferSize, string hashtag);
 
         [DllImport("__Internal")]
         private static extern void IOSFBFeedShare(
