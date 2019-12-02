@@ -48,5 +48,10 @@ namespace Facebook.Unity
         /// Uses the feed dialog.
         /// </summary>
         FEED = 3,
+
+        /// <summary>
+        /// Uses the feed dialog.
+        /// </summary>
+        BROWSER = 4,
     }
 }

@@ -35,6 +35,7 @@
     NATIVE = 1,
     WEB = 2,
     FEED = 3,
+    BROWSER = 4,
   };
 }
 
