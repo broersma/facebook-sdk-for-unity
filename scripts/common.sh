@@ -53,7 +53,7 @@ export SDK_VERSION=$SDK_VERSION_MAJOR.$SDK_VERSION_MINOR.$SDK_VERSION_REVISION
 UNITY_JAR_RESOLVER_NAME='unity-jar-resolver'
 UNITY_JAR_RESOLVER_PACKAGE_NAME='play-services-resolver'
 UNITY_JAR_RESOLVER_BASE_URL="https://github.com/googlesamples/$UNITY_JAR_RESOLVER_NAME/archive/v"
-UNITY_JAR_RESOLVER_VERSION='1.2.95'
+UNITY_JAR_RESOLVER_VERSION='1.2.135'
 UNITY_JAR_RESOLVER_ZIP_URL="$UNITY_JAR_RESOLVER_BASE_URL$UNITY_JAR_RESOLVER_VERSION.zip"
 
 export OUT="$PROJECT_ROOT/out"
@@ -86,7 +86,7 @@ downloadUnityJarResolverFromGithub() {
 
   UNITY_PACKAGE_PATH="$PROJECT_ROOT/$UNITY_JAR_RESOLVER_PACKAGE"
 
-  $UNITY_PATH -quit -batchmode -logFile -projectPath="$PROJECT_ROOT/UnitySDK" \
+  $UNITY_PATH -quit -batchmode -logFile -nographics -projectPath="$PROJECT_ROOT/UnitySDK" \
    -importPackage "$UNITY_PACKAGE_PATH" || die "Failed to import $UNITY_PACKAGE_PATH"
   info "Cleaning up..."
   rm "$UNITY_PACKAGE_PATH"
